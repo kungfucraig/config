@@ -15,6 +15,8 @@
 (server-start)
 (put 'set-goal-column 'disabled nil)
 (setq visible-bell t)
+(show-paren-mode t)
+(blink-cursor-mode nil)
 
 
 (require 'ido)
@@ -27,26 +29,35 @@
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*")
 
+;;(set-default-font "-outline-Consolas-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1-")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Viper Mode Stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/config/emacs/third-party")
+(add-to-list 'load-path "~/config/emacs/third-party/evil")
+
 (setq viper-mode t)
-(setq viper-ex-style-editing nil) ; can backspace past start of insert/line
-(setq viper-inhibit-startup-message 't)
+;;(setq viper-ex-style-editing nil) ; can backspace past start of insert/line
+(setq viper-inhibit-startup-message t)
 (setq viper-expert-level '5)
 (require 'viper)
-;;(setq vimpulse-experimental nil) ; turn off bleeding edge features
-;;(require 'vimpulse)
-;;(require 'redo)
-(add-to-list 'load-path "~/config/emacs")
-(add-to-list 'load-path "~/config/emacs/evil")
-(require 'evil)
-(evil-mode 1)
 
+;;(setq vimpulse-experimental nil) ; turn off bleeding edge features
+(require 'vimpulse)
+;;(require 'redo)
 (setq-default viper-auto-indent t)
 (setq-default tab-width 3)
 (setq-default viper-shift-width 3)
+
+;; (setq evil-auto-indent t)
+;; (setq tab-width 3)
+;; (setq evil-shift-width 3)
+
+;;(require ')
+;;(evil-mode 1)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Map some keys
@@ -188,7 +199,7 @@
   (insert "return Result(CMT_SUCCESS);"))
 
 ;; Don't use tabs, use spaces.
-(setq indent-tabs-mode nil)
+;;(setq indent-tabs-mode nil)
 
 (setq prefixes '("C_" "W_" "KRN_"
                         "EVT_" "J_" "UTL_"
@@ -224,7 +235,7 @@
 (add-hook 
  'c-mode-common-hook
  (lambda ()
-   (c-add-style "my-c-style" my-c-style t)
+   ;;(c-add-style "my-c-style" my-c-style t)
    
    ;; Set up some keys.
    (local-set-key "\C-c\C-f" 'cpp-function-header)
@@ -237,7 +248,8 @@
    (setq c-basic-offset 3)  
    ;; this seems to be key for "for loop" indenting
    (setq indent-tabs-mode nil)
-   (modify-syntax-entry ?_ "w")))
+;;   (modify-syntax-entry ?_ "w")
+))
 
 
 (setq auto-mode-alist 
