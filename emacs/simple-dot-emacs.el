@@ -37,8 +37,12 @@
 (setq viper-expert-level '5)
 (require 'viper)
 ;;(setq vimpulse-experimental nil) ; turn off bleeding edge features
-(require 'vimpulse)
-(require 'redo)
+;;(require 'vimpulse)
+;;(require 'redo)
+(add-to-list 'load-path "~/config/emacs")
+(add-to-list 'load-path "~/config/emacs/evil")
+(require 'evil)
+(evil-mode 1)
 
 (setq-default viper-auto-indent t)
 (setq-default tab-width 3)
