@@ -209,8 +209,8 @@
 (setq my-c-style
       `(
         (c-cleanup-list . (scope-operator
-                  empty-defun-braces
-                  defun-close-semi))
+                           empty-defun-braces
+                           defun-close-semi))
         (c-offsets-alist . (
                             (arglist-close . c-lineup-arglist)
                             (arglist-cont-nonempty . c-lineup-arglist)
@@ -235,7 +235,7 @@
 (add-hook 
  'c-mode-common-hook
  (lambda ()
-   ;;(c-add-style "my-c-style" my-c-style t)
+   (c-add-style "my-c-style" my-c-style t)
    
    ;; Set up some keys.
    (local-set-key "\C-c\C-f" 'cpp-function-header)
@@ -248,7 +248,7 @@
    (setq c-basic-offset 3)  
    ;; this seems to be key for "for loop" indenting
    (setq indent-tabs-mode nil)
-;;   (modify-syntax-entry ?_ "w")
+   ;;(modify-syntax-entry ?_ "w")
 ))
 
 
