@@ -82,7 +82,7 @@
 (defun cpp-source-file-header (fileName)
   (interactive "bBuffer Name: ")
   (shell-command 
-   (concat "cg cs -m classname="
+   (concat "cg.cmd cs -m classname="
            (if (or (string= (substring fileName -2) "qh")
                    (string= (substring fileName -2) "cc"))
                (substring fileName 0 -3)
@@ -94,7 +94,7 @@
 
 (defun cpp-include-file-header (fileName) 
   (interactive "bBuffer Name: ")
-  (shell-command (concat "cg ch -m classname="
+  (shell-command (concat "cg.cmd ch -m classname="
                          (if (string= (substring fileName -2) "qh")
                              (substring fileName 0 -3)
                            (substring fileName 0 -2))
@@ -105,11 +105,11 @@
 
 (defun cpp-function-header ()
   (interactive)
-  (shell-command (concat "cg cf") 1))
+  (shell-command (concat "cg.cmd cf") 1))
 
 (defun xml-file-header (fileName) 
   (interactive "bBuffer Name: ")
-  (shell-command (concat "cg xml -m filename=" fileName)
+  (shell-command (concat "cg.cmd xml -m filename=" fileName)
                  1 )
   (end-of-buffer))
 
@@ -140,15 +140,16 @@
     (type (car sp))
     (var (substring (cadr sp) 0 (- (length (cadr sp)) 1))))
     
-    (insert (concat "const " type "::iterator end = " var ".end();\n"))
     (indent-for-tab-command)
     (insert (concat "for ( " type "::iterator iter = " var ".begin();\n"))
     (indent-for-tab-command)
-    (insert "iter != end;\n")
+    (insert "iter != " var ".end();\n")
     (indent-for-tab-command)
-    (insert "++iter )\n")
-    (insert "   {\n\n   }\n")
-    (previous-line 2)
+    (insert "++iter )\n{")
+    (indent-for-tab-command)
+    (insert "\n\n}")
+    (indent-for-tab-command)
+    (previous-line 1)
     (indent-for-tab-command)
     ))
 
