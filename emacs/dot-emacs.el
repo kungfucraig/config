@@ -77,9 +77,10 @@
 (require 'viper)
 
 ;;(setq vimpulse-experimental nil) ; turn off bleeding edge features
-(add-to-list 'load-path "~/dev-misc/src/vimpulse")
+(add-to-list 'load-path "~/dev-misc/src/evil")
+(add-to-list 'load-path "~/.emacs.d")
 (require 'redo)
-(require 'vimpulse)
+(require 'evil)
 (setq-default viper-auto-indent t)
 (setq-default tab-width 2)
 (setq-default viper-shift-width 2)

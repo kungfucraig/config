@@ -10,7 +10,7 @@ umask 002
 
 if [ -z $OS ]
 then
-   export OS=`/bin/uname -o`
+   export OS=`/usr/bin/uname`
 fi
 
 # set vi mode
@@ -18,7 +18,7 @@ set -o vi
 
 # Setup the PATH to include a person's personal bin directory
 # and the sbin directories. It's nice to have these commands.
-export PATH=~/bin:/bin/:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=~/bin:/bin/:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 # Set the PAGER to be less
 export PAGER="less"
@@ -42,9 +42,13 @@ then
    alias ll="ls -alF"
    alias li="ls -F"
 else
-   alias ls="ls --color=auto -F"
-   alias ll="ls --color -alF"
-   alias li="ls --color=auto -F"
+   if [ "$OS" == "Darwin" ]; then
+     alias ls="ls -FG"
+   else
+     alias ls="ls --color=auto -F"
+     alias ll="ls --color -alF"
+     alias li="ls --color=auto -F"
+   fi
 fi
 
 # Setup remove to be less destructive.
