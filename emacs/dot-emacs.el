@@ -9,7 +9,7 @@
 (put 'downcase-region 'disabled nil)
 (blink-cursor-mode 0)
 (transient-mark-mode 1)
-(tool-bar-mode 0)
+;;(tool-bar-mode 0)
 (setq-default indent-tabs-mode nil)
 (setq next-line-add-newlines nil)
 (server-start)
