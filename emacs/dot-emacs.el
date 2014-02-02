@@ -78,12 +78,30 @@
 
 ;;(setq vimpulse-experimental nil) ; turn off bleeding edge features
 (add-to-list 'load-path "~/dev-misc/src/evil")
+(add-to-list 'load-path "~/dev-misc/src/undo-tree")
 (add-to-list 'load-path "~/.emacs.d")
-(require 'redo)
+;; evil-esc-delay
+;;(require 'redo)
+
+;; This needs to be set before we load evil.
+(setq evil-want-C-i-jump nil)
+
+;; Make * and # behave like vim.
+(setq evil-symbol-word-search t)
+
 (require 'evil)
+(evil-mode 1)
+
 (setq-default viper-auto-indent t)
 (setq-default tab-width 2)
 (setq-default viper-shift-width 2)
 
 (define-key viper-insert-basic-map (kbd "C-g") 'viper-exit-insert-state)
-(define-key viper-vi-basic-map (kbd "C-i") 'indent-for-tab-command)
+;;(define-key viper-vi-basic-map (kbd "C-i") 'indent-for-tab-command)
+(define-key evil-normal-state-map (kbd "<tab>") 'indent-for-tab-command)
+
+;;;;;;;;;;;;;;;;;;
+;; POV Ray
+;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/dev-misc/src/pov-mode")
+(require 'pov-mode)
