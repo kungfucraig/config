@@ -1,11 +1,9 @@
-# This is a bash extension file that I can share with others.
-# It does not have anything in it that preclude it from being used
-# by others.
+
+export DT_SANDBOX_ROOT"=~/sandboxes"
 
 HOSTNAME=`hostname -s`
 if [ "$HOSTNAME" == "rothbard" ]; then
   export EDITOR="/usr/local/bin/emacsclient --no-wait --alternate-editor=emacs"
-  alias povray="~/dev/raytrace/PovrayCommandLineMac/Povray37UnofficialMacCmd"
 else
   export EDITOR="/usr/bin/emacsclient --no-wait --alternate-editor=emacs"
 fi
@@ -15,11 +13,6 @@ export PATH=""
 
 # Set a umask.
 umask 002
-
-if [ -z $OS ]
-then
-   export OS=`/usr/bin/uname`
-fi
 
 # set vi mode
 set -o vi
@@ -50,7 +43,7 @@ then
    alias ll="ls -alF"
    alias li="ls -F"
 else
-   if [ "$OS" == "Darwin" ]; then
+   if [ `/usr/bin/uname` == "Darwin" ]; then
      alias ls="ls -FG"
    else
      alias ls="ls --color=auto -F"
@@ -75,5 +68,5 @@ fi
 
 # Set up environment for editing files
 #export BROWSER="/usr/bin/emacsclient --no-wait --alternate-editor=emacs"
-alias edit="$EDITOR"
+# alias edit="$EDITOR"
 alias sb="source ~/.bashrc"

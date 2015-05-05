@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General Options
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq inhibit-startup-message t)
@@ -67,41 +67,12 @@
 (global-set-key [C-kp-end] 'end-of-buffer)
 (global-set-key [C-end] 'end-of-buffer)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Viper Mode Stuff
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq viper-mode t)
-;;(setq viper-ex-style-editing nil) ; can backspace past start of insert/line
-(setq viper-inhibit-startup-message t)
-(setq viper-expert-level '5)
-(require 'viper)
-
-;;(setq vimpulse-experimental nil) ; turn off bleeding edge features
-(add-to-list 'load-path "~/dev-misc/src/evil")
-(add-to-list 'load-path "~/dev-misc/src/undo-tree")
-(add-to-list 'load-path "~/.emacs.d")
-;; evil-esc-delay
-;;(require 'redo)
-
 ;; This needs to be set before we load evil.
 (setq evil-want-C-i-jump nil)
 
 ;; Make * and # behave like vim.
 (setq evil-symbol-word-search t)
 
+(add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
-
-(setq-default viper-auto-indent t)
-(setq-default tab-width 2)
-(setq-default viper-shift-width 2)
-
-(define-key viper-insert-basic-map (kbd "C-g") 'viper-exit-insert-state)
-;;(define-key viper-vi-basic-map (kbd "C-i") 'indent-for-tab-command)
-(define-key evil-normal-state-map (kbd "<tab>") 'indent-for-tab-command)
-
-;;;;;;;;;;;;;;;;;;
-;; POV Ray
-;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/dev-misc/src/pov-mode")
-(require 'pov-mode)
