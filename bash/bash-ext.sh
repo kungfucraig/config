@@ -1,25 +1,29 @@
+export DT_SANDBOX_ROOT"=${HOME}/sandboxes"
 
-export DT_SANDBOX_ROOT"=~/sandboxes"
+# Clear the path and start over.
+export PATH=~/bin:/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 
-HOSTNAME=`hostname -s`
-if [ "$HOSTNAME" == "rothbard" ]; then
-  export EDITOR="/usr/local/bin/emacsclient --no-wait --alternate-editor=emacs"
+HOSTNAME=`/bin/hostname -s`
+
+if [ "$HOSTNAME" == "rothbard" ] || [ "$HOSTNAME" == "snarly" ] ; then
+  export EMACS_DIR="/Applications/Emacs.app/Contents/MacOS"
+  export EDITOR="${EMACS_DIR}/bin/emacsclient --no-wait --alternate-editor=emacs"
+  export PATH+=":${HOME}/software/bin"
+  export PYTHONPATH="${HOME}/software/lib/python2.7/site-packages"
+  export PATH=${EMACS_DIR}:${PATH}
+  export DT_DIR=~/dev/devtools
+  export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.4.1_1
+  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+  source ~/dev/devtools/shellutil/devtools.sh
 else
   export EDITOR="/usr/bin/emacsclient --no-wait --alternate-editor=emacs"
 fi
-
-# Clear the path and start over.
-export PATH=""
 
 # Set a umask.
 umask 002
 
 # set vi mode
 set -o vi
-
-# Setup the PATH to include a person's personal bin directory
-# and the sbin directories. It's nice to have these commands.
-export PATH=~/bin:/bin/:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 # Set the PAGER to be less
 export PAGER="less"
@@ -70,3 +74,6 @@ fi
 #export BROWSER="/usr/bin/emacsclient --no-wait --alternate-editor=emacs"
 # alias edit="$EDITOR"
 alias sb="source ~/.bashrc"
+
+# added by Anaconda3 4.1.1 installer
+export PATH="/Users/kungfucraig/anaconda/bin:$PATH"

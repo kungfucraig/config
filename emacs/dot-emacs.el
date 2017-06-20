@@ -20,6 +20,13 @@
 (column-number-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Package
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Terminal (tmux) mouse
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'mouse)
