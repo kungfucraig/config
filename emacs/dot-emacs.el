@@ -24,6 +24,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -58,6 +59,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Map some keys
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key [mouse-5] 'scroll-up-command)
+(global-set-key [mouse-4] 'scroll-down-command)
 (global-set-key [f3] 'bookmark-bmenu-list)
 (global-set-key [f4] 'bookmark-set)
 (global-set-key [f6] 'copy-to-register)
@@ -83,3 +86,22 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; Go
+;;;;;;;;;;;;;;;;;;;;;;;
+(setq-default tab-width 3)
+(defun auto-complete-for-go ()
+  (auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
+(with-eval-after-load 'go-mode
+   (require 'go-autocomplete))
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; SQL
+;;;;;;;;;;;;;;;;;;;;;;;
+(setq sqlformat-command 'pgformatter)
+(setq sqlformat-args '("-s2" "-g"))
+(add-hook 'sql-mode-hook 'sqlformat-on-save-mode)
+;;(define-key sql-mode-map (kbd "C-c C-f") 'sqlformat)

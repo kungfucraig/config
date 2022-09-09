@@ -5,9 +5,11 @@ export PATH=~/bin:/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 HOSTNAME=`/bin/hostname -s`
 
-if [ "$HOSTNAME" == "rothbard" ] || [ "$HOSTNAME" == "snarly" ] ; then
+if [ `uname` == "Darwin" ] ; then
   export EMACS_DIR="/Applications/Emacs.app/Contents/MacOS"
+  export GIT_EDITOR="${EMACS_DIR}/bin/emacsclient --alternate-editor=emacs"
   export EDITOR="${EMACS_DIR}/bin/emacsclient --no-wait --alternate-editor=emacs"
+  export INTELLIJ="/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea"
   export PATH+=":${HOME}/software/bin"
   export PYTHONPATH="${HOME}/software/lib/python2.7/site-packages"
   export PATH=${EMACS_DIR}:${PATH}
@@ -15,6 +17,7 @@ if [ "$HOSTNAME" == "rothbard" ] || [ "$HOSTNAME" == "snarly" ] ; then
   export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.4.1_1
   export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
   source ~/dev/devtools/shellutil/devtools.sh
+  source $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash
 else
   export EDITOR="/usr/bin/emacsclient --no-wait --alternate-editor=emacs"
 fi
@@ -77,3 +80,8 @@ alias sb="source ~/.bashrc"
 
 # added by Anaconda3 4.1.1 installer
 export PATH="/Users/kungfucraig/anaconda/bin:$PATH"
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+
+alias snowsql='/Applications/SnowSQL.app/Contents/MacOS/snowsql'
