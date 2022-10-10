@@ -101,7 +101,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SQL
 ;;;;;;;;;;;;;;;;;;;;;;;
-(setq sqlformat-command 'pgformatter)
-(setq sqlformat-args '("-s2" "-g"))
+(setq sqlformat-command 'sqlformat)
+;;(setq sqlformat-args '("-s2" "-g")) for pgformatter
 (add-hook 'sql-mode-hook 'sqlformat-on-save-mode)
 ;;(define-key sql-mode-map (kbd "C-c C-f") 'sqlformat)
