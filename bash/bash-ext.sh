@@ -85,3 +85,8 @@ export PATH="/Users/kungfucraig/anaconda/bin:$PATH"
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 
 alias snowsql='/Applications/SnowSQL.app/Contents/MacOS/snowsql'
+
+  if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+        . /etc/bash_completion
+  fi
+

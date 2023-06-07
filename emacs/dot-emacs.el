@@ -87,7 +87,6 @@
 (require 'evil)
 (evil-mode 1)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Go
 ;;;;;;;;;;;;;;;;;;;;;;;
@@ -105,3 +104,9 @@
 ;;(setq sqlformat-args '("-s2" "-g")) for pgformatter
 (add-hook 'sql-mode-hook 'sqlformat-on-save-mode)
 ;;(define-key sql-mode-map (kbd "C-c C-f") 'sqlformat)
+
+(add-hook 'compilation-mode-hook
+          (lambda ()
+            (visual-line-mode 1)
+            (local-set-key (kbd "C-x c") 'recompile)
+            ))
